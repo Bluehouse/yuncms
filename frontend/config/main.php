@@ -10,6 +10,9 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+
+    'defaultRoute' => 'index', // 设置默认首页
+
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
