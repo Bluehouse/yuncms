@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>购物车页面</title>
 
     <link href="assets/v1.0/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css"/>
