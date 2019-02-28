@@ -1,532 +1,361 @@
-<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
-    app.settings.asideFolded = false; 
-    app.settings.asideDock = false;
-  ">
-    <!-- main -->
-    <div class="col">
-        <!-- main header -->
-        <div class="bg-light lter b-b wrapper-md">
-            <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
-                    <small class="text-muted">Welcome to angulr application</small>
-                </div>
-                <div class="col-sm-6 text-right hidden-xs">
-                    <div class="inline m-r text-left">
-                        <div class="m-b-xs">1290 <span class="text-muted">items</span></div>
-                        <div ng-init="data1=[ 106,108,110,105,110,109,105,104,107,109,105,100,105,102,101,99,98 ]"
-                             ui-jq="sparkline"
-                             ui-options="{{data1}}, {type:'bar', height:20, barWidth:5, barSpacing:1, barColor:'#dce5ec'}"
-                             class="sparkline inline">loading...
-                        </div>
+<div class="container-fluid p-y-md">
+    <!-- Stats -->
+    <div class="row">
+        <div class="col-sm-6 col-lg-3">
+            <a class="card" href="javascript:void(0)">
+                <div class="card-block clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-muted m-t-0 m-b-xs">Revenue</p>
+                        <p class="h3 text-blue m-t-sm m-b-0">$120.9k</p>
                     </div>
-                    <div class="inline text-left">
-                        <div class="m-b-xs">$30,000 <span class="text-muted">revenue</span></div>
-                        <div ng-init="data2=[ 105,102,106,107,105,104,101,99,98,109,105,100,108,110,105,110,109 ]"
-                             ui-jq="sparkline"
-                             ui-options="{{data2}}, {type:'bar', height:20, barWidth:5, barSpacing:1, barColor:'#dce5ec'}"
-                             class="sparkline inline">loading...
-                        </div>
+                    <div class="pull-left m-r">
+                        <span class="img-avatar img-avatar-48 bg-blue bg-inverse"><i
+                                    class="ion-ios-bell fa-1-5x"></i></span>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <!-- / main header -->
-        <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
-            <!-- stats -->
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="row row-sm text-center">
-                        <div class="col-xs-6">
-                            <div class="panel padder-v item">
-                                <div class="h1 text-info font-thin h1">521</div>
-                                <span class="text-muted text-xs">New items</span>
-                                <div class="top text-right w-full">
-                                    <i class="fa fa-caret-down text-warning m-r-sm"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href class="block panel padder-v bg-primary item">
-                                <span class="text-white font-thin h1 block">930</span>
-                                <span class="text-muted text-xs">Uploads</span>
-                                <span class="bottom text-right w-full">
-                  <i class="fa fa-cloud-upload text-muted m-r-sm"></i>
-                </span>
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a href class="block panel padder-v bg-info item">
-                                <span class="text-white font-thin h1 block">432</span>
-                                <span class="text-muted text-xs">Comments</span>
-                                <span class="top text-left">
-                  <i class="fa fa-caret-up text-warning m-l-sm"></i>
-                </span>
-                            </a>
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="panel padder-v item">
-                                <div class="font-thin h1">129</div>
-                                <span class="text-muted text-xs">Feeds</span>
-                                <div class="bottom text-left">
-                                    <i class="fa fa-caret-up text-warning m-l-sm"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 m-b-md">
-                            <div class="r bg-light dker item hbox no-border">
-                                <div class="col w-xs v-middle hidden-md">
-                                    <div ng-init="data1=[60,40]" ui-jq="sparkline" ui-options="{{data1}}, {type:'pie', height:40, sliceColors:['{{app.color.warning}}','#fff']}" class="sparkline inline"></div>
-                                </div>
-                                <div class="col dk padder-v r-r">
-                                    <div class="text-primary-dk font-thin h1"><span>$12,670</span></div>
-                                    <span class="text-muted text-xs">Revenue, 60% of the goal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="panel wrapper">
-                        <label class="i-switch bg-warning pull-right" ng-init="showSpline=true">
-                            <input type="checkbox" ng-model="showSpline">
-                            <i></i>
-                        </label>
-                        <h4 class="font-thin m-t-none m-b text-muted">Latest Campaign</h4>
-                        <div ui-jq="plot" ui-refresh="showSpline" ui-options="
-              [
-                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } },
-                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } }
-              ], 
-              {
-                colors: ['{{app.color.info}}', '{{app.color.primary}}'],
-                series: { shadowSize: 3 },
-                xaxis:{ font: { color: '#a1a7ac' } },
-                yaxis:{ font: { color: '#a1a7ac' }, max:20 },
-                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
-                tooltip: true,
-                tooltipOpts: { content: 'Visits of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
-              }
-            " style="height:246px" >
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- / stats -->
+        <!-- .col-sm-6 -->
 
-            <!-- service -->
-            <div class="panel hbox hbox-auto-xs no-border">
-                <div class="col wrapper">
-                    <i class="fa fa-circle-o text-info m-r-sm pull-right"></i>
-                    <h4 class="font-thin m-t-none m-b-none text-primary-lt">Managed Services</h4>
-                    <span class="m-b block text-sm text-muted">Service report of this year (updated 1 hour ago)</span>
-                    <div ui-jq="plot" ui-options="
-            [
-              { data: {{d4}}, lines: { show: true, lineWidth: 1, fill:true, fillColor: { colors: [{opacity: 0.2}, {opacity: 0.8}] } } }
-            ], 
-            {
-              colors: ['{{app.color.light}}'],
-              series: { shadowSize: 3 },
-              xaxis:{ show:false },
-              yaxis:{ font: { color: '#a1a7ac' } },
-              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
-              tooltip: true,
-              tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
-            }
-          " style="height:240px" >
+        <div class="col-sm-6 col-lg-3">
+            <a class="card bg-green bg-inverse" href="javascript:void(0)">
+                <div class="card-block clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-muted m-t-0 m-b-xs">Total visitors</p>
+                        <p class="h3 m-t-sm m-b-0">920 000</p>
+                    </div>
+                    <div class="pull-left m-r">
+                        <span class="img-avatar img-avatar-48 bg-gray-light-o"><i
+                                    class="ion-ios-people fa-1-5x"></i></span>
                     </div>
                 </div>
-                <div class="col wrapper-lg w-lg bg-light dk r-r">
-                    <h4 class="font-thin m-t-none m-b">Reports</h4>
-                    <div class="">
-                        <div class="">
-                            <span class="pull-right text-primary">60%</span>
-                            <span>Consulting</span>
-                        </div>
-                        <progressbar value="60" class="progress-xs m-t-sm bg-white" animate="true" type="primary"></progressbar>
-                        <div class="">
-                            <span class="pull-right text-info">35%</span>
-                            <span>Online tutorials</span>
-                        </div>
-                        <progressbar value="35" class="progress-xs m-t-sm bg-white" animate="true" type="info"></progressbar>
-                        <div class="">
-                            <span class="pull-right text-warning">25%</span>
-                            <span>EDU management</span>
-                        </div>
-                        <progressbar value="25" class="progress-xs m-t-sm bg-white" animate="true" type="warning"></progressbar>
-                    </div>
-                    <p class="text-muted">Dales nisi nec adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis</p>
-                </div>
-            </div>
-            <!-- / service -->
-
-            <!-- tasks -->
-            <div class="panel wrapper">
-                <div class="row">
-                    <div class="col-md-6 b-r b-light no-border-xs">
-                        <a href class="text-muted pull-right text-lg"><i class="icon-arrow-right"></i></a>
-                        <h4 class="font-thin m-t-none m-b-md text-muted">My Tasks</h4>
-                        <div class=" m-b">
-                            <div class="m-b">
-                                <span class="label text-base bg-warning pos-rlt m-r"><i class="arrow right arrow-warning"></i> 19:30</span>
-                                <a href>Feed cat</a>
-                            </div>
-                            <div class="m-b">
-                                <span class="label text-base bg-info pos-rlt m-r"><i class="arrow right arrow-info"></i> 12:30</span>
-                                <a href>Fishing Time</a>
-                            </div>
-                            <div class="m-b">
-                                <span class="label text-base bg-primary pos-rlt m-r"><i class="arrow right arrow-primary"></i> 10:30</span>
-                                <a href>Kick-off meeting</a>
-                            </div>
-                            <div class="m-b">
-                                <span class="label text-base bg-light pos-rlt m-r"><i class="arrow right arrow-light"></i> 07:30</span>
-                                <a href>Morning running</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="row row-sm">
-                            <div class="col-xs-6 text-center">
-                                <div ui-jq="easyPieChart" ui-options="{
-                    percent: 75,
-                    lineWidth: 4,
-                    trackColor: '{{app.color.light}}',
-                    barColor: '{{app.color.primary}}',
-                    scaleColor: false,
-                    size: 115,
-                    rotate: 90,
-                    lineCap: 'butt'
-                  }" class="inline m-t">
-                                    <div>
-                                        <span class="text-primary h4">75%</span>
-                                    </div>
-                                </div>
-                                <div class="text-muted font-bold text-xs m-t m-b">Work Done</div>
-                            </div>
-                            <div class="col-xs-6 text-center">
-                                <div ui-jq="easyPieChart" ui-options="{
-                    percent: 50,
-                    lineWidth: 4,
-                    trackColor: '{{app.color.light}}',
-                    barColor: '{{app.color.info}}',
-                    scaleColor: false,
-                    size: 115,
-                    rotate: 180,
-                    lineCap: 'butt'
-                  }" class="inline m-t">
-                                    <div>
-                                        <span class="text-info h4">50%</span>
-                                    </div>
-                                </div>
-                                <div class="text-muted font-bold text-xs m-t m-b">Started</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- / tasks -->
-
-            <!-- tasks -->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="panel no-border">
-                        <div class="panel-heading wrapper b-b b-light">
-              <span class="text-xs text-muted pull-right">
-                <i class="fa fa-circle text-primary m-r-xs"></i> 12
-                <i class="fa fa-circle text-info m-r-xs m-l-sm"></i> 30
-                <i class="fa fa-circle text-warning m-r-xs m-l-sm"></i> 98
-              </span>
-                            <h4 class="font-thin m-t-none m-b-none text-muted">Teammates</h4>
-                        </div>
-                        <ul class="list-group list-group-lg m-b-none">
-                            <li class="list-group-item">
-                                <a href class="thumb-sm m-r">
-                                    <img src="img/a1.jpg" class="r r-2x">
-                                </a>
-                                <span class="pull-right label bg-primary inline m-t-sm">Admin</span>
-                                <a href>Damon Parker</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href class="thumb-sm m-r">
-                                    <img src="img/a2.jpg" class="r r-2x">
-                                </a>
-                                <span class="pull-right label bg-info inline m-t-sm">Member</span>
-                                <a href>Joe Waston</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href class="thumb-sm m-r">
-                                    <img src="img/a3.jpg" class="r r-2x">
-                                </a>
-                                <span class="pull-right label bg-warning inline m-t-sm">Editor</span>
-                                <a href>Jannie Dvis</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href class="thumb-sm m-r">
-                                    <img src="img/a4.jpg" class="r r-2x">
-                                </a>
-                                <span class="pull-right label bg-warning inline m-t-sm">Editor</span>
-                                <a href>Emma Welson</a>
-                            </li>
-                        </ul>
-                        <div class="panel-footer">
-                            <span class="pull-right badge badge-bg m-t-xs">32</span>
-                            <button class="btn btn-primary btn-addon btn-sm"><i class="fa fa-plus"></i>Add Teammate</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="list-group list-group-lg list-group-sp">
-                        <a herf class="list-group-item clearfix">
-              <span class="pull-left thumb-sm avatar m-r">
-                <img src="img/a4.jpg" alt="...">
-                <i class="on b-white right"></i>
-              </span>
-                            <span class="clear">
-                <span>Chris Fox</span>
-                <small class="text-muted clear text-ellipsis">What's up, buddy</small>
-              </span>
-                        </a>
-                        <a herf class="list-group-item clearfix">
-              <span class="pull-left thumb-sm avatar m-r">
-                <img src="img/a5.jpg" alt="...">
-                <i class="on b-white right"></i>
-              </span>
-                            <span class="clear">
-                <span>Amanda Conlan</span>
-                <small class="text-muted clear text-ellipsis">Come online and we need talk about the plans that we have discussed</small>
-              </span>
-                        </a>
-                        <a herf class="list-group-item clearfix">
-              <span class="pull-left thumb-sm avatar m-r">
-                <img src="img/a6.jpg" alt="...">
-                <i class="busy b-white right"></i>
-              </span>
-                            <span class="clear">
-                <span>Dan Doorack</span>
-                <small class="text-muted clear text-ellipsis">Hey, Some good news</small>
-              </span>
-                        </a>
-                        <a herf class="list-group-item clearfix">
-              <span class="pull-left thumb-sm avatar m-r">
-                <img src="img/a7.jpg" alt="...">
-                <i class="busy b-white right"></i>
-              </span>
-                            <span class="clear">
-                <span>Lauren Taylor</span>
-                <small class="text-muted clear text-ellipsis">Nice to talk with you.</small>
-              </span>
-                        </a>
-                        <a herf class="list-group-item clearfix">
-              <span class="pull-left thumb-sm avatar m-r">
-                <img src="img/a8.jpg" alt="...">
-                <i class="away b-white right"></i>
-              </span>
-                            <span class="clear">
-                <span>Mike Jackson</span>
-                <small class="text-muted clear text-ellipsis">This is nice</small>
-              </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- / tasks -->
+            </a>
         </div>
+        <!-- .col-sm-6 -->
+
+        <div class="col-sm-6 col-lg-3">
+            <a class="card bg-blue bg-inverse" href="javascript:void(0)">
+                <div class="card-block clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-muted m-t-0 m-b-xs">Revenue</p>
+                        <p class="h3 m-t-sm m-b-0">$340.5k</p>
+                    </div>
+                    <div class="pull-left m-r">
+                        <span class="img-avatar img-avatar-48 bg-gray-light-o"><i
+                                    class="ion-ios-speedometer fa-1-5x"></i></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- .col-sm-6 -->
+
+        <div class="col-sm-6 col-lg-3">
+            <a class="card bg-purple bg-inverse" href="javascript:void(0)">
+                <div class="card-block clearfix">
+                    <div class="pull-right">
+                        <p class="h6 text-muted m-t-0 m-b-xs">Messages</p>
+                        <p class="h3 m-t-sm m-b-0">3 new</p>
+                    </div>
+                    <div class="pull-left m-r">
+                        <span class="img-avatar img-avatar-48 bg-gray-light-o"><i
+                                    class="ion-ios-email fa-1-5x"></i></span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- .col-sm-6 -->
     </div>
-    <!-- / main -->
-    <!-- right col -->
-    <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
-        <tabset class="nav-tabs-alt" justified="true">
-            <tab>
-                <tab-heading>
-                    <i class="glyphicon glyphicon-user text-md text-muted wrapper-sm"></i>
-                </tab-heading>
-                <div class="wrapper-md">
-                    <div class="m-b-sm text-md">Who to follow</div>
-                    <ul class="list-group no-bg no-borders pull-in">
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="img/a4.jpg" alt="..." class="img-circle">
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="img/a5.jpg" alt="..." class="img-circle">
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Mogen Polish</a></div>
-                                <small class="text-muted">Writter, Mag Editor</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="img/a6.jpg" alt="..." class="img-circle">
-                                <i class="busy b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Joge Lucky</a></div>
-                                <small class="text-muted">Art director, Movie Cut</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="img/a7.jpg" alt="..." class="img-circle">
-                                <i class="away b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Folisise Chosielie</a></div>
-                                <small class="text-muted">Musician, Player</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="img/a8.jpg" alt="..." class="img-circle">
-                                <i class="away b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Aron Gonzalez</a></div>
-                                <small class="text-muted">Designer</small>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="text-center">
-                        <a href class="btn btn-sm btn-primary padder-md m-b">More Connections</a>
-                    </div>
-                </div>
-            </tab>
-            <tab>
-                <tab-heading>
-                    <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
-                </tab-heading>
-                <div class="wrapper-md">
-                    <div class="m-b-sm text-md">Chat</div>
-                    <ul class="list-group no-borders pull-in auto">
-                        <li class="list-group-item">
-                            <span class="pull-left thumb-sm m-r"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                            <a href class="text-muted" ui-toggle-class="show" target=".app-aside-right"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-                            <div class="clear">
-                                <div><a href="">Chris Fox</a></div>
-                                <small class="text-muted">about 2 minutes ago</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-left thumb-sm m-r"><img src="img/a2.jpg" alt="..." class="img-circle"></span>
-                            <a href class="text-muted" ui-toggle-class="show" target=".app-aside-right"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-                            <div class="clear">
-                                <div><a href="">Amanda Conlan</a></div>
-                                <small class="text-muted">about 2 hours ago</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-left thumb-sm m-r"><img src="img/a3.jpg" alt="..." class="img-circle"></span>
-                            <a href class="text-muted" ui-toggle-class="show" target=".app-aside-right"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-                            <div class="clear">
-                                <div><a href="">Dan Doorack</a></div>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="pull-left thumb-sm m-r"><img src="img/a4.jpg" alt="..." class="img-circle"></span>
-                            <a href class="text-muted" ui-toggle-class="show" target=".app-aside-right"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-                            <div class="clear">
-                                <div><a href="">Lauren Taylor</a></div>
-                                <small class="text-muted">about 2 minutes ago</small>
-                            </div>
+    <!-- .row -->
+    <!-- End stats -->
+
+    <div class="row">
+        <!-- Company overview Chart -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-blue bg-inverse">
+                    <h4>Company overview</h4>
+                    <ul class="card-actions">
+                        <li>
+                            <span class="label bg-green">Stat<span class="hidden-xs">istic</span>s <i
+                                        class="ion-connection-bars"></i></span>
                         </li>
                     </ul>
                 </div>
-            </tab>
-            <tab>
-                <tab-heading>
-                    <i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i>
-                </tab-heading>
-                <div class="wrapper-md">
-                    <div class="m-b-sm text-md">Transaction</div>
-                    <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
-                        <li class="list-group-item">
-                            <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
-                            <span class="block text-md text-info">B 15,000.00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="text-muted">Got from Mike at 1:00 pm</span>
-                            <span class="block text-md text-primary">B 23,000.00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="text-muted">Sponsored ORG at 9:00 am</span>
-                            <span class="block text-md text-warning">B 3,000.00</span>
-                        </li>
-                        <li class="list-group-item">
-                            <span class="text-muted">Send to Jacob at 8:00 am</span>
-                            <span class="block text-md">B 11,000.00</span>
+                <div class="card-block p-b-0 bg-blue bg-inverse">
+                    <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                    <div style="height: 200px;">
+                        <canvas class="js-chartjs-lines1"></canvas>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-xs-6 col-lg-3 b-r">
+                            <p class="h6 small text-muted">Yearly change</p>
+                            <p class="h3 m-t-0 m-b-md">+214.22</p>
+                            <div class="progress progress-mini m-b-sm">
+                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                     aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 76%"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3 b-r visible-lg">
+                            <p class="h6 small text-muted">Shares trade</p>
+                            <p class="h3 m-t-0 m-b-md">$28.74M</p>
+                            <div class="progress progress-mini m-b-sm">
+                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                     aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 84%"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3 b-r visible-lg">
+                            <p class="h6 small text-muted">Yearly change</p>
+                            <p class="h3 m-t-0 m-b-md">+74%</p>
+                            <div class="progress progress-mini m-b-sm">
+                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                     aria-valuenow="74" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 74%"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-lg-3">
+                            <p class="h6 small text-muted">Total revenue</p>
+                            <p class="h3 m-t-0 m-b-md">$74.23M</p>
+                            <div class="progress progress-mini m-b-sm">
+                                <div class="progress-bar progress-bar-green" role="progressbar"
+                                     aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .row -->
+                </div>
+                <!-- .card-block -->
+            </div>
+            <!-- .card -->
+        </div>
+        <!-- .col-lg-8 -->
+        <!-- End Company overview Chart -->
+
+        <!-- Weekly transactions Widget -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Weekly transactions</h4>
+                    <ul class="card-actions">
+                        <li class="dropdown">
+                            <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Profile</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">3</span> News</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">1</span> Messages</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">More</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
+                    <!-- .card-actions -->
                 </div>
-            </tab>
-        </tabset>
-        <div class="padder-md">
-            <!-- streamline -->
-            <div class="m-b text-md">Recent Activity</div>
-            <div class="streamline b-l m-b">
-                <div class="sl-item">
-                    <div class="m-l">
-                        <div class="text-muted">5 minutes ago</div>
-                        <p><a href class="text-info">Jessi</a> commented your post.</p>
+                <!-- .card-header -->
+                <div class="card-block p-b-0">
+                    <div style="height: 268px;">
+                        <canvas class="js-chartjs-lines2"></canvas>
                     </div>
                 </div>
-                <div class="sl-item">
-                    <div class="m-l">
-                        <div class="text-muted">11:30</div>
-                        <p>Join comference</p>
-                    </div>
-                </div>
-                <div class="sl-item b-success b-l">
-                    <div class="m-l">
-                        <div class="text-muted">10:30</div>
-                        <p>Call to customer <a href class="text-info">Jacob</a> and discuss the detail.</p>
-                    </div>
-                </div>
-                <div class="bg-info wrapper-sm m-l-n m-r-n m-b r r-2x">
-                    Create tasks for the team
-                </div>
-                <div class="sl-item b-primary b-l">
-                    <div class="m-l">
-                        <div class="text-muted">Wed, 25 Mar</div>
-                        <p>Finished task <a href class="text-info">Testing</a>.</p>
-                    </div>
-                </div>
-                <div class="sl-item b-warning b-l">
-                    <div class="m-l">
-                        <div class="text-muted">Thu, 10 Mar</div>
-                        <p>Trip to the moon</p>
-                    </div>
-                </div>
-                <div class="sl-item b-info b-l">
-                    <div class="m-l">
-                        <div class="text-muted">Sat, 5 Mar</div>
-                        <p>Prepare for presentation</p>
-                    </div>
-                </div>
-                <div class="sl-item b-l">
-                    <div class="m-l">
-                        <div class="text-muted">Sun, 11 Feb</div>
-                        <p><a href class="text-info">Jessi</a> assign you a task <a href class="text-info">Mockup Design</a>.</p>
-                    </div>
-                </div>
-                <div class="sl-item b-l">
-                    <div class="m-l">
-                        <div class="text-muted">Thu, 17 Jan</div>
-                        <p>Follow up to close deal</p>
-                    </div>
+                <div class="card-block text-center">
+                    <span class="label bg-green m-r-xs">Statistics <i
+                                class="ion-connection-bars"></i></span>
+                    <small>for the <a href="javascript:void(0)">last year</a></small>
                 </div>
             </div>
-            <!-- / streamline -->
         </div>
+        <!-- .col-lg-4 -->
+        <!-- End Weekly transactions Widget -->
     </div>
-    <!-- / right col -->
+    <!-- .row -->
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <!-- Weekly users Widget -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Weekly users</h4>
+                    <ul class="card-actions">
+                        <li class="dropdown">
+                            <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Profile</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">3</span> News</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">1</span> Messages</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">More</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-block">
+                    <div style="height: 238px;">
+                        <canvas class="js-chartjs-bars"></canvas>
+                    </div>
+                </div>
+                <div class="card-block text-center">
+                    <span class="label bg-green m-r-xs">Statistics <i
+                                class="ion-connection-bars"></i></span>
+                    <small>for the <a href="javascript:void(0)">last year</a></small>
+                </div>
+            </div>
+            <!-- .card -->
+            <!-- End Weekly users Widget -->
+        </div>
+        <!-- .col-lg-4 -->
+
+        <div class="col-lg-8">
+            <!-- Transactions history Widget -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Transactions history</h4>
+                    <ul class="card-actions">
+                        <li class="dropdown">
+                            <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Profile</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">3</span> News</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">1</span> Messages</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">More</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-block">
+                    <div style="height: 238px;">
+                        <canvas class="js-chartjs-lines3"></canvas>
+                    </div>
+                </div>
+                <div class="card-block text-center">
+                    <span class="label bg-green m-r-xs">Statistics <i
+                                class="ion-connection-bars"></i></span>
+                    <small>for the <a href="javascript:void(0)">last year</a></small>
+                </div>
+            </div>
+            <!-- .card -->
+            <!-- End Transactions history Widget -->
+        </div>
+        <!-- .col-lg-8 -->
+    </div>
+    <!-- .row -->
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Yearly summary widget -->
+            <div class="card">
+                <div class="card-header">
+                    <h4>Yearly summary</h4>
+                    <ul class="card-actions">
+                        <li class="dropdown">
+                            <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Profile</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">3</span> News</a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)"><span
+                                                class="badge pull-right">1</span> Messages</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">More</li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- .card-actions -->
+                </div>
+                <!-- .card-header -->
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p class="h6 small text-muted">Yearly change</p>
+                            <p class="h3 m-t-0">+214.22</p>
+                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                            <div style="height: 120px;">
+                                <canvas class="js-chartjs-lines4"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="h6 small text-muted">Shares trade</p>
+                            <p class="h3 m-t-0">$28.74M</p>
+                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                            <div style="height: 120px;">
+                                <canvas class="js-chartjs-lines5"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <p class="h6 small text-muted">Yearly change</p>
+                            <p class="h3 m-t-0">+74%</p>
+                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
+                            <div style="height: 120px;">
+                                <canvas class="js-chartjs-lines6"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .card-block -->
+            </div>
+            <!-- .card -->
+            <!-- End Yearly summary widget -->
+        </div>
+        <!-- .col-lg-8 -->
+
+        <!-- Server load Widget -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-purple bg-inverse">
+                    <h4>Server load</h4>
+                    <ul class="card-actions">
+                        <li>
+                            <span class="js-flot-live-info"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-block bg-purple p-x-0 p-b-0">
+                    <!-- Live Chart Container -->
+                    <div class="js-flot-live" style="height: 207px;"></div>
+                </div>
+            </div>
+            <!-- .card -->
+        </div>
+        <!-- End Server load Widget // .col-lg-4 -->
+    </div>
+    <!-- .row -->
 </div>
+<!-- .container-fluid -->

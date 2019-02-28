@@ -11,6 +11,9 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    // 设置后台默认访问页面
+//    'defaultRoute' => 'admin/default/index', // Modules下的方法
+    'defaultRoute' => 'index/index',
     'modules' => [],
     'components' => [
         'request' => [
