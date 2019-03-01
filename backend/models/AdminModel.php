@@ -9,7 +9,6 @@ use Yii;
 class AdminModel extends ActiveRecord
 {
     public $rememberMe = false; // 创建一个属性供activeForm创建使用
-
     public $adminrepass;
 
     public static function tableName(){
@@ -29,15 +28,15 @@ class AdminModel extends ActiveRecord
     public function rules(){
         return [
             // on是绑定的应用场景
-            ['adminuser', 'required', 'message' => '账号不能为空','on' => ['login', 'seekpass', 'changepass']], // 不绑定场景的话，也获取不到字段
-            ['adminpass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changepass']],
+            ['adminuser', 'required', 'message' => '账号不能为空','on' => ['login', 'seekpass', 'changepass', 'adminadd']], // 不绑定场景的话，也获取不到字段
+            ['adminpass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changepass', 'adminadd', 'adminedit']],
             ['rememberMe', 'boolean', 'on' => 'login'],
             ['adminpass', 'validatePass', 'on' => 'login'],
-            ['adminemail', 'required', 'message' => '邮箱不能为空', 'on' => 'seekpass'],
-            ['adminemail', 'email', 'message' => '邮箱格式不正确', 'on' => 'seekpass'],
+            ['adminemail', 'required', 'message' => '邮箱不能为空', 'on' => ['seekpass','adminadd', 'adminedit']],
+            ['adminemail', 'email', 'message' => '邮箱格式不正确', 'on' => ['seekpass', 'adminadd', 'adminedit']],
             ['adminemail', 'validateEmail', 'on' => 'seekpass'],
-            ['adminrepass', 'required', 'message' => '确认密码不能为空', 'on' => 'changepass'],
-            ['adminrepass', 'compare', 'compareAttribute' => 'adminpass', 'message' => '两次输入密码不一致', 'on' => 'changepass']
+            ['adminrepass', 'required', 'message' => '确认密码不能为空', 'on' => ['changepass', 'adminadd', 'adminedit']],
+            ['adminrepass', 'compare', 'compareAttribute' => 'adminpass', 'message' => '两次输入密码不一致', 'on' => ['changepass','adminadd', 'adminedit']]
         ];
     }
 
@@ -51,6 +50,7 @@ class AdminModel extends ActiveRecord
         }
     }
 
+    // 校验邮箱
     public function validateEmail() {
         if (!$this->hasErrors()) {
             $data = self::find()->where('adminuser = :user and adminemail = :email', [':user' => $this->adminuser, ':email' => $this->adminemail])->one();
@@ -60,7 +60,7 @@ class AdminModel extends ActiveRecord
         }
     }
 
-    // 判断登录
+    // 登录
     public function login($data){
         $this->scenario = "login";
        if ($this->load($data) && $this->validate()) {
@@ -78,6 +78,7 @@ class AdminModel extends ActiveRecord
        return false;
     }
 
+    // 找回密码
     public function seekpass($data) {
         $this->scenario = "seekpass"; // 定义场景，减少冗余字段规则校验
         if ($this->load($data) && $this->validate()) {
@@ -97,14 +98,47 @@ class AdminModel extends ActiveRecord
         return false;
     }
 
+    // 创建token
     public function createToken($adminuser, $time){
         return md5(md5($adminuser) . base64_encode(Yii::$app->request->userIP) . md5($time));
     }
 
+    // 修改密码
     public function changePass($data) {
         $this->scenario = "changepass";
         if ($this->load($data) && $this->validate()) {
             return (bool)$this->updateAll(['adminpass' => md5($this->adminpass)], 'adminuser = :user', [':user' => $this->adminuser]);
+        }
+        return false;
+    }
+
+    // 添加管理员
+    public function add($data){
+        $this->scenario = "adminadd";
+        if ($this->load($data) && $this->validate()) {
+            $this->adminpass = md5($this->adminpass);
+            if ($this->save(false)) { // 内部false表示不用再做验证，因为外层已经验证过
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    // 保存管理更新数据
+    public function edit($data) {
+        $this->scenario = "adminedit";
+        if ($this->load($data) && $this->validate()) {
+            return (bool) $this->updateAll(['adminemail' => $this->adminemail, 'adminpass' => md5($this->adminpass)], 'adminid = :adminid', [':adminid' => $this->adminid]);
+        }
+    }
+
+    // 删除管理员
+    public function del($id) {
+        $result = $this->deleteAll("adminid = :id", [':id' => $id]);
+        if ($result) {
+            return true;
         }
         return false;
     }
