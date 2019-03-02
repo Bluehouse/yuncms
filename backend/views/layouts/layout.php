@@ -97,7 +97,10 @@
                             <a href="javascript:void(0)"><i class="ion-ios-pricetags"></i> 分类管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="base_pages_blank.html">Blank</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['category/list']); ?>">分类列表</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo yii\helpers\Url::to(['category/add']); ?>">添加分类</a>
                                 </li>
                             </ul>
                         </li>
