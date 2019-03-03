@@ -17,7 +17,7 @@
         <div class="card-block">
             <a href="<?php echo yii\helpers\Url::to(['member/add']); ?>"><i class="fa fa-plus btn btn-app-green-outline">添加用户</i></a>
             <a href="<?php echo yii\helpers\Url::to(['member/delAll']); ?>"><i class="ion-android-delete btn btn-app-blue-outline">批量删除</i></a>
-            <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
+            <table class="table table-bordered table-striped table-vcenter table-header-bg table-condensed table-hover js-dataTable-full">
                 <thead>
                 <tr>
                     <th class="text-center"><label class="css-input css-checkbox css-checkbox-primary">

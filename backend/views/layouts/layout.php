@@ -57,7 +57,7 @@
                         </li>
                         <li class="nav-item nav-drawer-header">后台管理</li>
                         <li class="nav-item nav-item-has-subnav">
-                            <a href="javascript:void(0)"><i class="fa fa-male"></i>用户管理</a>
+                            <a href="javascript:void(0)"><i class="fa fa-users"></i>用户管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
                                     <a href="<?php echo yii\helpers\Url::to(['member/list']); ?>">用户列表</a>
@@ -109,10 +109,10 @@
                             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> 商品管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="base_js_maps.html">商品列表</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['product/list']); ?>">商品列表</a>
                                 </li>
                                 <li>
-                                    <a href="base_js_sliders.html">添加商品</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['product/add']); ?>">添加商品</a>
                                 </li>
                             </ul>
                         </li>
