@@ -11,14 +11,17 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+
     public $css = [
-        'css/site.css',
+//        'css/site.css',
     ];
     public $js = [
     ];
+
+    // 这个依赖会影响到采用的后台模板视图样式
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+//        'yii\web\YiiAsset', // 导致js失效
+//        'yii\bootstrap\BootstrapAsset', // 导致图标样式错位
     ];
 
     /*

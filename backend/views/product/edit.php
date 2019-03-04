@@ -63,7 +63,6 @@
                     <!-- Step 2 -->
                     <div class="tab-pane m-t-md m-b-lg" id="simple-classic-step2">
                         <?php echo $form->field($model, 'descr')->textArea(['class' => 'form-control input-lg', 'id' => 'descr', 'rows' => 6]); ?>
-
                     </div>
                     <!-- End Step 2 -->
 

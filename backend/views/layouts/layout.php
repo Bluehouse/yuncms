@@ -1,13 +1,14 @@
 <?php
     use yii\helpers\Url;
 ?>
-<!DOCTYPE html>
 
-<html class="app-ui">
+<?php $this->beginPage() ?>
+<!DOCTYPE html>
+<html class="app-ui" lang="<?= Yii::$app->language ?>">
 
 <head>
     <!-- Meta -->
-    <meta charset="UTF-8" />
+    <meta charset="<?= Yii::$app->charset ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
@@ -32,9 +33,12 @@
     <link rel="stylesheet" id="css-app" href="assets/v1.0/css/app.css" />
     <link rel="stylesheet" id="css-app-custom" href="assets/v1.0/css/app-custom.css" />
     <!-- End Stylesheets -->
+
+    <?php $this->head() ?>
 </head>
 
 <body class="app-ui layout-has-drawer layout-has-fixed-header">
+<?php $this->beginBody() ?>
 <div class="app-layout-canvas">
     <div class="app-layout-container">
 
@@ -45,7 +49,7 @@
             <div class="app-layout-drawer-scroll">
                 <!-- Drawer logo -->
                 <div id="logo" class="drawer-header">
-                    <a href="index.html"><img class="img-responsive" src="assets/v1.0/img/logo/logo-backend.png" title="" alt="" /></a>
+                    <a href="<?php echo Url::to(['index/index']); ?>"><img class="img-responsive" src="assets/v1.0/img/logo/logo-backend.png" title="" alt="" /></a>
                 </div>
 
                 <!-- Drawer navigation -->
@@ -53,17 +57,17 @@
                     <ul class="nav nav-drawer">
                         <li class="nav-item nav-drawer-header">Apps</li>
                         <li class="nav-item">
-                            <a href="index.html"><i class="fa fa-tachometer"></i> 控制台</a>
+                            <a href="<?php echo Url::to(['index/index']); ?>"><i class="fa fa-tachometer"></i> 控制台</a>
                         </li>
                         <li class="nav-item nav-drawer-header">后台管理</li>
                         <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="fa fa-users"></i>用户管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['member/list']); ?>">用户列表</a>
+                                    <a href="<?php echo Url::to(['member/list']); ?>">用户列表</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['member/add']); ?>">添加用户</a>
+                                    <a href="<?php echo Url::to(['member/add']); ?>">添加用户</a>
                                 </li>
                             </ul>
                         </li>
@@ -97,10 +101,10 @@
                             <a href="javascript:void(0)"><i class="ion-ios-pricetags"></i> 分类管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['category/list']); ?>">分类列表</a>
+                                    <a href="<?php echo Url::to(['category/list']); ?>">分类列表</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['category/add']); ?>">添加分类</a>
+                                    <a href="<?php echo Url::to(['category/add']); ?>">添加分类</a>
                                 </li>
                             </ul>
                         </li>
@@ -109,10 +113,10 @@
                             <a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> 商品管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['product/list']); ?>">商品列表</a>
+                                    <a href="<?php echo Url::to(['product/list']); ?>">商品列表</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo yii\helpers\Url::to(['product/add']); ?>">添加商品</a>
+                                    <a href="<?php echo Url::to(['product/add']); ?>">添加商品</a>
                                 </li>
                             </ul>
                         </li>
@@ -323,10 +327,12 @@
 <script src="assets/v1.0/js/app-custom.js"></script>
 
 <!-- Page JS Plugins -->
-<script src="assets/v1.0/js/plugins/datatables/jquery.dataTables.min.js"></script>
+<!--<script src="assets/v1.0/js/plugins/datatables/jquery.dataTables.min.js"></script>-->
+<!---->
+<!--<!-- Page JS Code -->-->
+<!--<script src="assets/v1.0/js/pages/base_tables_datatables.js"></script>-->
 
-<!-- Page JS Code -->
-<script src="assets/v1.0/js/pages/base_tables_datatables.js"></script>
-
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>
