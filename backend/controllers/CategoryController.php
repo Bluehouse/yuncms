@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use yii\web\Controller;
-use backend\models\CategoryModel;
+use common\models\CategoryModel;
 use Yii;
 
 class CategoryController extends Controller{

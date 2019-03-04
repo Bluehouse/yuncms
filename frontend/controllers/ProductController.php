@@ -9,16 +9,30 @@
 namespace frontend\controllers;
 
 use yii\web\Controller;
+use common\models\ProductModel;
+use yii\data\Pagination;
+use Yii;
 
-class ProductController extends Controller
+class ProductController extends CommonController
 {
     public $layout = false;
 
+    // 商品列表是通过某个分类点进来的，所以都有分类id
     public function actionIndex(){
-        return $this->render("index");
+        $cid = Yii::$app->request->get('cid');
+        $model = ProductModel::find()->where("cateid = :cid and ison = '1'", [':cid' => $cid]);
+
+        $count = $model->count();
+        $pageSize = Yii::$app->params['pageSize']['product'];
+        $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
+        $productList = $model->offset($pager->offset)->limit($pager->limit)->all();
+
+        return $this->render("index", ['model' => $model, 'pager' => $pager, 'productList' => $productList]);
     }
 
     public function actionDetail() {
-        return $this->render("detail");
+        $pid = Yii::$app->request->get('pid');
+        $product = ProductModel::find()->where('productid = :pid', [':pid' => $pid])->one();
+        return $this->render("detail", ['product' => $product]);
     }
 }

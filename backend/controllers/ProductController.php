@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use yii\web\Controller;
-use backend\models\ProductModel;
-use backend\models\CategoryModel;
+use common\models\ProductModel;
+use common\models\CategoryModel;
 use yii\data\Pagination;
 use Yii;
 

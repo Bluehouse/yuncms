@@ -1,3 +1,4 @@
+<?php use yii\bootstrap\ActiveForm; ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -180,7 +181,7 @@
             <!--名称-->
             <div class="tb-detail-hd">
                 <h1>
-                    良品铺子 手剥松子218g 坚果炒货 巴西松子
+                    <?php echo $product->title; ?>
                 </h1>
             </div>
             <div class="tb-detail-list">
@@ -188,11 +189,11 @@
                 <div class="tb-detail-price">
                     <li class="price iteminfo_price">
                         <dt>促销价</dt>
-                        <dd><em>¥</em><b class="sys_item_price">56.90</b></dd>
+                        <dd><em>¥</em><b class="sys_item_price"><?php echo $product->saleprice; ?></b></dd>
                     </li>
                     <li class="price iteminfo_mktprice">
                         <dt>原价</dt>
-                        <dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>
+                        <dd><em>¥</em><b class="sys_item_mktprice"><?php echo $product->price; ?></b></dd>
                     </li>
                     <div class="clear"></div>
                 </div>
@@ -280,7 +281,7 @@
                         <input id="min" class="am-btn am-btn-default" name="" type="button" value="-"/>
                         <input id="text_box" name="" type="text" value="1" style="width:30px;"/>
                         <input id="add" class="am-btn am-btn-default" name="" type="button" value="+"/>
-                        <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
+                        <span id="Stock" class="tb-hidden">库存<span class="stock"><?php echo $product->num; ?></span>件</span>
                     </dd>
 
             </div>
@@ -343,7 +344,12 @@
     </li>
     <li>
         <div class="clearfix tb-btn tb-btn-basket theme-login">
-            <a id="LikBasket" title="加入购物车" href="#"><i></i>加入购物车</a>
+            <?php $form = ActiveForm::begin([
+                'action' => yii\helpers\Url::to(['cart/add']),
+                'id' => 'myform'
+            ]) ?>
+            <a id="add2Cart" title="加入购物车" href="javascript:void(0)" onclick="document.getElementById('myform').submit();return false;"><i></i>加入购物车</a>
+            <?php ActiveForm::end(); ?>
         </div>
     </li>
 </div>
@@ -1349,6 +1355,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    function add2Cart($pid) {
+
+    }
+</script>
 
 </body>
 

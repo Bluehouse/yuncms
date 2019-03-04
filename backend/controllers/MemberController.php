@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use yii\web\Controller;
-use backend\models\UserModel;
+use common\models\UserModel;
 use Yii;
 use yii\data\Pagination;
 

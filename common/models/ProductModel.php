@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\db\ActiveRecord;
 use Yii;
@@ -35,7 +35,7 @@ class ProductModel extends ActiveRecord{
             [['price','saleprice'], 'number', 'min' => 0.01, 'message' => '价格必须是数字'],
             ['num', 'integer', 'min' => 0, 'message' => '库存必须是数字'],
             [['issale','ishot', 'istui', 'ison'], 'safe'],
-//            [['cover'], 'required'],
+            ['cover', 'required'],
         ];
     }
 

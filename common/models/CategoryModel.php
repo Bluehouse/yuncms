@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
@@ -112,6 +112,40 @@ class CategoryModel extends ActiveRecord{
         // 添加分类的缩进
         $cates = $this->setPrefix($cates);
 
+        return $cates;
+    }
+
+    public static function getParents($categorys, $pid = 0, $level = 0) {
+        $list = [];
+        foreach ($categorys as $k => $v) {
+            if ($v['parentid'] == $pid) {
+                unset($categorys[$k]);
+                if ($level < 2) {
+                    //小于三级
+                    $v['children'] = self::getParents($categorys, $v['cateid'], $level + 1);
+                }
+                $list[] = $v;
+            }
+        }
+        return $list;
+    }
+
+    // 供前台调用，重组成三级分类
+    public static function getMenu() {
+        // 获取所有分类，将对象转化为数组
+        $cates = self::find()->all();
+        $cates = ArrayHelper::toArray($cates);
+
+        $cates = self::getParents($cates);
+
+        // 按层级排序分类
+//        $cates = self->_getTree($cates);
+//        $top = self::find()->where('parentid = :pid', [":pid" => 0])->limit(11)->orderby('createtime asc')->asArray()->all();
+//        $data = [];
+//        foreach((array)$top as $k => $cate) {
+//            $cate['children'] = self::find()->where("parentid = :pid", [":pid" => $cate['cateid']])->limit(10)->asArray()->all();
+//            $data[$k] = $cate;
+//        }
         return $cates;
     }
 
