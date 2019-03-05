@@ -7,7 +7,7 @@ use common\models\UserModel;
 use Yii;
 use yii\data\Pagination;
 
-class MemberController extends Controller {
+class MemberController extends CommonController {
     public $layout = "layout";
 
     // 添加用户

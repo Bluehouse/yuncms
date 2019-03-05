@@ -6,8 +6,9 @@ use yii\web\Controller;
 use backend\models\AdminModel;
 use Yii;
 use yii\data\Pagination;
+use backend\models\RbacModel;
 
-class ManageController extends Controller{
+class ManageController extends CommonController{
     // 找回密码
     public function actionMailChangePass() {
         $model = new AdminModel;
@@ -103,5 +104,39 @@ class ManageController extends Controller{
         }
 
         $this->redirect(['manage/list']);
+    }
+
+    // 用户授权
+    public function actionAssign() {
+        $this->layout = "layout";
+
+        $adminid = (int)Yii::$app->request->get('aid');
+        if (empty($adminid)) {
+            return false; // 参数为空
+        }
+
+        // 判断用户是否存在
+//        if (!AdminModel::find()->where('adminid = :aid', [':aid' => $aid])->one()) {
+        $admin = AdminModel::findOne($adminid);
+        if (empty($admin)) {
+            return false; // admin不存在
+        }
+
+        if (Yii::$app->request->isPost) {
+            $data = Yii::$app->request->post();
+            $children = empty($data['children']) ? [] : $data['children'];
+            if (RbacModel::grant($adminid, $children)) {
+                Yii::$app->session->setFlash('info', '授权成功');
+            }
+        }
+
+        // 查询出所有角色和权限的子节点
+        $auth = Yii::$app->authManager;
+        $roles = RbacModel::getOptions($auth->getRoles(), null);
+        $permissions = RbacModel::getOptions($auth->getPermissions(), null);
+        // 重组成checkbox数据格式
+        $children = RbacModel::getChildrenByUser($adminid);
+
+        return $this->render('assign', ['roles' => $roles, 'permissions' => $permissions, 'admin' => $admin->adminuser, 'children' => $children]);
     }
 }

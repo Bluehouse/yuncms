@@ -34,6 +34,7 @@ if (Yii::$app->session->hasFlash('info')) {
                 <!-- End Step Tabs -->
 
                 <?php $form = ActiveForm::begin([
+                    'enableClientScript' => false, // 阻止引入js
                     'options' => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
                     'fieldConfig' => [
                         'template' => '

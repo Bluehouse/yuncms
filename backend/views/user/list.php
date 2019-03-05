@@ -1,4 +1,3 @@
-
 <!-- Page Content -->
 <div class="container-fluid p-y-md">
     <?php

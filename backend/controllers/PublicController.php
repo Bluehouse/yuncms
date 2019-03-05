@@ -6,7 +6,7 @@ use yii\web\Controller;
 use backend\models\AdminModel; // 引入之后，可以通过model调用activeForm表单
 use Yii;
 
-class PublicController extends Controller
+class PublicController extends CommonController
 {
     public function actionLogin(){
         $this->layout = false;

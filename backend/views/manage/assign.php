@@ -17,29 +17,33 @@
         <div class="col-lg-11">
             <div class="card">
                 <div class="card-header">
-                    <h4>添加管理员</h4>
+                    <h4>授权</h4>
                 </div>
                 <div class="card-block">
-                    <a href="<?php echo yii\helpers\Url::to(['manage/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
+                    <a href="<?php echo yii\helpers\Url::to(['rbac/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
                     <?php $form = ActiveForm::begin([
-                        'enableClientScript' => false, // 阻止引入js
                         'options' => ['class' => 'js-validation-bootstrap form-horizontal'],
                         'fieldConfig' => [
-                            'template' => '<div class="form-group">
+                            'template' => '
 <label class="col-md-4 control-label" for="val-username">{label} <span class="text-orange">*</span></label>
 <div class="col-md-7">{input}{error}</div>'
                         ]
                     ]); ?>
-                        <?php echo $form->field($model, 'adminuser')->textInput(['class' => 'form-control']); ?>
-                        <?php echo $form->field($model, 'adminemail')->textInput(['class' => 'form-control']); ?>
-                        <?php echo $form->field($model, 'adminpass')->passwordInput(['class' => 'form-control']); ?>
-                        <?php echo $form->field($model, 'adminrepass')->passwordInput(['class' => 'form-control']); ?>
-                        <div class="form-group m-b-0">
-                            <div class="col-md-8 col-md-offset-4">
-                                <?php echo Html::submitButton('保存', ['class' => 'btn btn-app']);?>
-                            </div>
+                    <div class="form-group">
+                        <?php echo Html::label('管理员名称', null) . Html::encode($admin); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Html::label('分配角色', null) . Html::checkboxList('children', $children['roles'], $roles); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php echo Html::label('分配权限', null) . Html::checkboxList('children', $children['permissions'], $permissions); ?>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <div class="col-md-8 col-md-offset-4">
+                            <?php echo Html::submitButton('授权', ['class' => 'btn btn-app']); ?>
                         </div>
-                   <?php ActiveForm::end(); ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
 
             </div>

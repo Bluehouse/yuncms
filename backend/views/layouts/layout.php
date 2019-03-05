@@ -88,11 +88,10 @@
                             <a href="javascript:void(0)"><i class="fa fa-lock"></i>权限管理</a>
                             <ul class="nav nav-subnav">
                                 <li>
-                                    <a href="base_forms_elements.html">Elements</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['rbac/create-role']); ?>">创建角色</a>
                                 </li>
-
                                 <li>
-                                    <a href="base_forms_samples.html">Samples</a>
+                                    <a href="<?php echo yii\helpers\Url::to(['rbac/roles']); ?>">角色列表</a>
                                 </li>
 
                             </ul>

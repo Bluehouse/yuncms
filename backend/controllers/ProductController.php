@@ -8,7 +8,7 @@ use common\models\CategoryModel;
 use yii\data\Pagination;
 use Yii;
 
-class ProductController extends Controller{
+class ProductController extends CommonController{
     public $layout = "layout";
 
     public function actions()

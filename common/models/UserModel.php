@@ -3,7 +3,7 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
-use backend\models\ProfileModel;
+use common\models\ProfileModel;
 use Yii;
 
 /**
