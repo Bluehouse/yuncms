@@ -21,9 +21,9 @@ class MemberController extends CommonController
             $data = Yii::$app->request->post();
 
             // 校验是否用户是否存在，密码是否正确
-            if ($) {
-
-            }
+//            if ($) {
+//
+//            }
 
             // 跳转到上一页
         }

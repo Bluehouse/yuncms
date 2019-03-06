@@ -49,13 +49,6 @@
                 'layout' => '{items}{summary} <div class="card-block col-md-offset-8"><nav>{pager}</nav>
             </div>',
             ]); ?>
-<!--            <div class="card-block col-md-offset-8">-->
-<!--                <nav>-->
-<!--                    <ul class="pagination pagination-sm">-->
-<!--                        --><?php //echo yii\widgets\LinkPager::widget(['pagination' => $pager, 'prevPageLabel' => '<i class="ion-chevron-left"></i>', 'nextPageLabel' => '<i class="ion-chevron-right"></i>']);?>
-<!--                    </ul>-->
-<!--                </nav>-->
-<!--            </div>-->
         </div>
     </div>
 </div>

@@ -1,11 +1,13 @@
-<?php use yii\bootstrap\ActiveForm; ?>
+<?php
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>商品页面</title>
     <link href="assets/v1.0/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css"/>
@@ -21,12 +23,9 @@
     <script type="text/javascript" src="assets/v1.0/js/jquery.imagezoom.min.js"></script>
     <script type="text/javascript" src="assets/v1.0/js/jquery.flexslider.js"></script>
     <script type="text/javascript" src="assets/v1.0/js/list.js"></script>
-
 </head>
 
 <body>
-
-
 <!--顶部导航条 -->
 <div class="am-container header">
     <ul class="message-l">
@@ -254,8 +253,10 @@
                                 <a href="javascript:;" title="关闭" class="close">×</a>
                             </div>
                             <div class="theme-popbod dform">
-                                <form class="theme-signin" name="loginform" action="" method="post">
-
+                                <?php $form = ActiveForm::begin([
+                                    'action' => Url::to(['cart/add']),
+                                    'id' => 'myform'
+                                ]) ?>
                                     <div class="theme-signin-left">
 
                                         <div class="theme-options">
@@ -276,10 +277,11 @@
                                             </ul>
                                         </div>
                                         <div class="theme-options">
-                                            <div class="cart-title number">数量</div>
+                                            <div class="cart-title number">数量111</div>
+
                     <dd>
                         <input id="min" class="am-btn am-btn-default" name="" type="button" value="-"/>
-                        <input id="text_box" name="" type="text" value="1" style="width:30px;"/>
+                        <input id="text_box" name="productnum" type="text" value="1" style="width:30px;"/>
                         <input id="add" class="am-btn am-btn-default" name="" type="button" value="+"/>
                         <span id="Stock" class="tb-hidden">库存<span class="stock"><?php echo $product->num; ?></span>件</span>
                     </dd>
@@ -301,8 +303,6 @@
                 <span id="Stock" class="tb-hidden">库存<span class="stock">1000</span>件</span>
             </div>
         </div>
-
-        </form>
     </div>
 </div>
 
@@ -344,14 +344,12 @@
     </li>
     <li>
         <div class="clearfix tb-btn tb-btn-basket theme-login">
-            <?php $form = ActiveForm::begin([
-                'action' => yii\helpers\Url::to(['cart/add']),
-                'id' => 'myform'
-            ]) ?>
-            <a id="add2Cart" title="加入购物车" href="javascript:void(0)" onclick="document.getElementById('myform').submit();return false;"><i></i>加入购物车</a>
-            <?php ActiveForm::end(); ?>
+                <input type="hidden" name="price" value="<?php echo $product->issale == '1' ? $product->saleprice : $product->price; ?>">
+                <input type="hidden" name="productid" value="<?php echo $product->productid; ?>">
+                <a id="add2Cart" title="加入购物车" href="javascript:void(0)" onclick="document.getElementById('myform').submit();return false;"><i></i>加入购物车</a>
         </div>
     </li>
+    <?php ActiveForm::end(); ?>
 </div>
 
 </div>

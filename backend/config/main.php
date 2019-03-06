@@ -6,6 +6,8 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+$adminmenu = require __DIR__ . '/adminmenu.php';
+
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
@@ -27,6 +29,7 @@ return [
             'itemChildTable' => '{{%auth_item_child}}',
             'assignmentTable' => '{{%auth_assignment}}',
             'ruleTable' => '{{%auth_rule}}',
+            'defaultRoles' => ['default']
         ],
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -61,5 +64,5 @@ return [
         ],
         */
     ],
-    'params' => $params,
+    'params' => array_merge($params, ['adminmenu' => $adminmenu]), // 将菜单项合并到params，Yii::$app->params['adminmenu']
 ];

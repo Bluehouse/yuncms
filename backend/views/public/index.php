@@ -1,9 +1,17 @@
 <?php
-    // 没有效果
     use backend\assets\AppAsset;
     AppAsset::register($this);
+    // Page JS Plugins CSS
+    AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/flot/jquery.flot.stack.min.js");
+    AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/chartjs/Chart.min.js");
+    AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/flot/jquery.flot.min.js");
+    AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/flot/jquery.flot.pie.min.js");
+    AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/flot/jquery.flot.resize.min.js");
+    AppAsset::addScript($this, "@web/assets/v1.0/js/pages/index.js");
     AppAsset::addScript($this, "@web/assets/v1.0/js/plugins/slick/slick.min.js");
+
     AppAsset::addCss($this, Yii::$app->request->baseUrl . "@web/assets/v1.0/js/plugins/slick/slick.min.css");
+    AppAsset::addCss($this, Yii::$app->request->baseUrl . "@web/assets/v1.0/js/plugins/slick/slick-theme.min.css");
 ?>
 
 <div class="container-fluid p-y-md">
@@ -13,7 +21,7 @@
             <a class="card" href="javascript:void(0)">
                 <div class="card-block clearfix">
                     <div class="pull-right">
-                        <p class="h6 text-muted m-t-0 m-b-xs">Revenue</p>
+                        <p class="h6 text-muted m-t-0 m-b-xs">今日注册用户</p>
                         <p class="h3 text-blue m-t-sm m-b-0">$120.9k</p>
                     </div>
                     <div class="pull-left m-r">
@@ -29,7 +37,7 @@
             <a class="card bg-green bg-inverse" href="javascript:void(0)">
                 <div class="card-block clearfix">
                     <div class="pull-right">
-                        <p class="h6 text-muted m-t-0 m-b-xs">Total visitors</p>
+                        <p class="h6 text-muted m-t-0 m-b-xs">今日访问量</p>
                         <p class="h3 m-t-sm m-b-0">920 000</p>
                     </div>
                     <div class="pull-left m-r">
@@ -45,7 +53,7 @@
             <a class="card bg-blue bg-inverse" href="javascript:void(0)">
                 <div class="card-block clearfix">
                     <div class="pull-right">
-                        <p class="h6 text-muted m-t-0 m-b-xs">Revenue</p>
+                        <p class="h6 text-muted m-t-0 m-b-xs">今日成交额</p>
                         <p class="h3 m-t-sm m-b-0">$340.5k</p>
                     </div>
                     <div class="pull-left m-r">
@@ -61,7 +69,7 @@
             <a class="card bg-purple bg-inverse" href="javascript:void(0)">
                 <div class="card-block clearfix">
                     <div class="pull-right">
-                        <p class="h6 text-muted m-t-0 m-b-xs">Messages</p>
+                        <p class="h6 text-muted m-t-0 m-b-xs">最新消息</p>
                         <p class="h3 m-t-sm m-b-0">3 new</p>
                     </div>
                     <div class="pull-left m-r">
@@ -71,9 +79,7 @@
                 </div>
             </a>
         </div>
-        <!-- .col-sm-6 -->
     </div>
-    <!-- .row -->
     <!-- End stats -->
 
     <div class="row">
@@ -81,7 +87,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-header bg-blue bg-inverse">
-                    <h4>Company overview</h4>
+                    <h4>收入走势</h4>
                     <ul class="card-actions">
                         <li>
                             <span class="label bg-green">Stat<span class="hidden-xs">istic</span>s <i
@@ -90,7 +96,6 @@
                     </ul>
                 </div>
                 <div class="card-block p-b-0 bg-blue bg-inverse">
-                    <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
                     <div style="height: 200px;">
                         <canvas class="js-chartjs-lines1"></canvas>
                     </div>
@@ -138,9 +143,7 @@
                 </div>
                 <!-- .card-block -->
             </div>
-            <!-- .card -->
         </div>
-        <!-- .col-lg-8 -->
         <!-- End Company overview Chart -->
 
         <!-- Weekly transactions Widget -->
@@ -169,7 +172,6 @@
                             </ul>
                         </li>
                     </ul>
-                    <!-- .card-actions -->
                 </div>
                 <!-- .card-header -->
                 <div class="card-block p-b-0">
@@ -184,7 +186,6 @@
                 </div>
             </div>
         </div>
-        <!-- .col-lg-4 -->
         <!-- End Weekly transactions Widget -->
     </div>
     <!-- .row -->
@@ -229,7 +230,6 @@
                     <small>for the <a href="javascript:void(0)">last year</a></small>
                 </div>
             </div>
-            <!-- .card -->
             <!-- End Weekly users Widget -->
         </div>
         <!-- .col-lg-4 -->
@@ -272,10 +272,8 @@
                     <small>for the <a href="javascript:void(0)">last year</a></small>
                 </div>
             </div>
-            <!-- .card -->
             <!-- End Transactions history Widget -->
         </div>
-        <!-- .col-lg-8 -->
     </div>
     <!-- .row -->
 
@@ -314,7 +312,6 @@
                         <div class="col-sm-4">
                             <p class="h6 small text-muted">Yearly change</p>
                             <p class="h3 m-t-0">+214.22</p>
-                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
                             <div style="height: 120px;">
                                 <canvas class="js-chartjs-lines4"></canvas>
                             </div>
@@ -322,7 +319,6 @@
                         <div class="col-sm-4">
                             <p class="h6 small text-muted">Shares trade</p>
                             <p class="h3 m-t-0">$28.74M</p>
-                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
                             <div style="height: 120px;">
                                 <canvas class="js-chartjs-lines5"></canvas>
                             </div>
@@ -337,9 +333,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- .card-block -->
             </div>
-            <!-- .card -->
             <!-- End Yearly summary widget -->
         </div>
         <!-- .col-lg-8 -->
@@ -362,26 +356,11 @@
             </div>
             <!-- .card -->
         </div>
-        <!-- End Server load Widget // .col-lg-4 -->
     </div>
-    <!-- .row -->
 </div>
 <!-- .container-fluid -->
 
-<!-- Page JS Plugins CSS -->
-<!--<link rel="stylesheet" href="assets/v1.0/js/plugins/slick/slick.min.css" />-->
-<link rel="stylesheet" href="assets/v1.0/js/plugins/slick/slick-theme.min.css" />
-
-<!-- Page Plugins -->
-<!--<script src="assets/v1.0/js/plugins/slick/slick.min.js"></script>-->
-<script src="assets/v1.0/js/plugins/chartjs/Chart.min.js"></script>
-<script src="assets/v1.0/js/plugins/flot/jquery.flot.min.js"></script>
-<script src="assets/v1.0/js/plugins/flot/jquery.flot.pie.min.js"></script>
-<script src="assets/v1.0/js/plugins/flot/jquery.flot.stack.min.js"></script>
-<script src="assets/v1.0/js/plugins/flot/jquery.flot.resize.min.js"></script>
-
 <!-- Page JS Code -->
-<script src="assets/v1.0/js/pages/index.js"></script>
 <script>
     $(function()
     {

@@ -10,7 +10,7 @@ class PublicController extends CommonController
 {
     public function actionLogin(){
         $this->layout = false;
-        $model = new AdminModel();
+        $model = new AdminModel;
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post();
             if ($model->login($data)) {

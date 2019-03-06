@@ -89,7 +89,7 @@
                         <?php } ?>
 
                         <li class="nav-item nav-drawer-header">后台管理</li>
-                        <li class="nav-item nav-item-has-subnav active open">
+                        <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="fa fa-users"></i>用户管理</a>
                             <ul class="nav nav-subnav">
                                 <li><a href="<?php echo Url::to(['member/list']); ?>">用户列表</a></li>
@@ -129,7 +129,7 @@
                                 <li><a href="<?php echo Url::to(['product/add']); ?>">添加商品</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item nav-item-has-subnav">
+                        <li class="nav-item nav-item-has-subnav active open">
                             <a href="javascript:void(0)"><i class="fa fa-list-alt"></i>订单管理</a>
                             <ul class="nav nav-subnav">
                                 <li><a href="<?php echo Url::to(['public/change-pass']); ?>">订单列表</a></li>
@@ -295,15 +295,15 @@
                 <div class="card-block">
                     <div class="row text-center">
                         <div class="col-xs-6">
-                            <a class="card card-block m-b-0 bg-app-tertiary bg-inverse" href="/">
-                                <i class="ion-laptop fa-4x"></i>
-                                <p>后台</p>
+                            <a class="card card-block m-b-0 bg-app-secondary bg-inverse" href="index.html">
+                                <i class="ion-speedometer fa-4x"></i>
+                                <p>前台</p>
                             </a>
                         </div>
                         <div class="col-xs-6">
-                            <a class="card card-block m-b-0 bg-app-secondary bg-inverse" href="http://www.yuncms.com" target="_blank">
-                                <i class="ion-speedometer fa-4x"></i>
-                                <p>前台</p>
+                            <a class="card card-block m-b-0 bg-app-tertiary bg-inverse" href="frontend_home.html">
+                                <i class="ion-laptop fa-4x"></i>
+                                <p>后台</p>
                             </a>
                         </div>
                     </div>

@@ -4,8 +4,24 @@ namespace common\models;
 
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\behaviors\BlameableBehavior;
+use Yii;
 
 class CategoryModel extends ActiveRecord{
+
+    // 采用行为，添加分类的时候自动加入adminid，先给分类加一个adminid，存储谁创建的这个分类，用rule规则判断，只能该用户删除分类
+    public function behaviors() {
+        return [
+            [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'adminid',
+                'updatedByAttribute' => null,
+//                'value' => Yii::$app->user->id
+                'value' => Yii::$app->session['admin']['adminid']
+            ]
+        ];
+    }
+
     // 定义表名
     public static function tableName() {
         return "{{%category}}";

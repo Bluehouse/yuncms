@@ -32,7 +32,7 @@ class ProductController extends CommonController
 
     public function actionDetail() {
         $pid = Yii::$app->request->get('pid');
-        $product = ProductModel::find()->where('productid = :pid', [':pid' => $pid])->one();
+        $product = ProductModel::findOne($pid);
         return $this->render("detail", ['product' => $product]);
     }
 }

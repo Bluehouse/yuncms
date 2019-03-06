@@ -60,17 +60,32 @@ class AdminModel extends ActiveRecord
         }
     }
 
+    // 获取登录后的具体用户信息
+    private function _getAdminInfo() {
+        return self::find()->where('adminuser = :adminuser', [':adminuser' => $this->adminuser])->one();
+    }
+
     // 登录
     public function login($data){
         $this->scenario = "login";
        if ($this->load($data) && $this->validate()) {
+           // 表单里没有adminid, 查询一遍
+//           return Yii::$app->user->login($this->_getAdminInfo(), $this->rememberMe ? 24 * 3600 : 0);
+
            $lifetime = $this->rememberMe ? 24 * 3600 : 0;
+           $adminInfo = $this->_getAdminInfo();
+
            $session = Yii::$app->session;
+           if (!$session->isActive) {
+               $session->open();
+           }
            session_set_cookie_params($lifetime);
            $session['admin'] = [
-               'adminuser' => $this->adminuser,
+               'adminuser' => $adminInfo->adminuser,
+               'adminid' => $adminInfo->adminid,
                'isLogin' => 1,
            ];
+
            $this->updateAll(['logintime' => time(), 'loginip' => ip2long(Yii::$app->request->userIP)], "adminuser = :user", [':user' => $this->adminuser]);
            return (bool)$session['admin']['isLogin'];
 

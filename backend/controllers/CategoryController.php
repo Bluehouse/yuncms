@@ -6,6 +6,7 @@ use yii\web\Controller;
 use common\models\CategoryModel;
 use Yii;
 
+
 class CategoryController extends CommonController{
     public $layout = "layout";
 

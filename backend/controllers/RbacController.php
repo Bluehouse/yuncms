@@ -9,9 +9,9 @@ use yii\data\ActiveDataProvider;
 use backend\models\RbacModel;
 
 class RbacController extends CommonController{
-    public function actionCreateRole() {
-        $this->layout = "layout";
+    public $layout = "layout";
 
+    public function actionCreateRole() {
         if (Yii::$app->request->isPost) {
             // RBAC交给authManage来处理，不用再单独创建model,也不用往视图传递model
             $auth = Yii::$app->authManager;
@@ -31,8 +31,6 @@ class RbacController extends CommonController{
     }
 
     public function actionRoles() {
-        $this->layout = "layout";
-
         $auth = Yii::$app->authManager;
         $data = new ActiveDataProvider([
             'query' => (new Query)->from($auth->itemTable)->where('type = 1')->orderBy('created_at desc'),
@@ -43,8 +41,6 @@ class RbacController extends CommonController{
 
     // 给角色分配子角色，或者权限
     public function actionAssignItem($name) {
-        $this->layout = "layout";
-
         // 渲染一个模板，可以选择权限或者子角色，保存
         $name = htmlspecialchars($name);
 
@@ -65,5 +61,21 @@ class RbacController extends CommonController{
 
         // 不方便使用checkbox，重组数据
         return $this->render('_assignitem', ['parent' => $name, 'roles' => $roles, 'children' => $children, 'permissions' => $permissions]);
+    }
+
+    public function actionCreateRule() {
+        if (Yii::$app->request->isPost) {
+            $data = Yii::$app->request->post();
+            $className = 'backend\\models\\' . $data['class_name'];
+            if (!class_exists($className)) {
+                Yii::$app->session->setFlash('info', '规则类不存在');
+            }
+            $rule = new $className;
+            if (Yii::$app->authManager->add($rule)) {
+                Yii::$app->session->setFlash('info', '添加成功');
+            }
+        }
+
+        return $this->render('_createrule');
     }
 }

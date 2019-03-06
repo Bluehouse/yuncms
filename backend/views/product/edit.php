@@ -31,7 +31,7 @@
                     <li>
                         <a href="#simple-classic-step3" data-toggle="tab"><i class="ion-ios-gear"></i>附加设置</a>
                     </li>
-                </ul>
+                </u l>
                 <!-- End Step Tabs -->
 
                 <!-- Form -->

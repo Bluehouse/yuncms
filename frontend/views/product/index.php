@@ -1,7 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+    use yii\helpers\Url;
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -81,7 +82,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="am-g am-g-fixed">
             <div class="am-u-sm-12 am-u-md-12">
@@ -164,17 +164,17 @@
                         <?php foreach($productList as $pro): ?>
                         <li>
                             <div class="i-pic limit">
-                                <a href="<?php echo yii\helpers\Url::to(['product/detail', 'pid' => $pro->productid]); ?>">
+                                <a href="<?php echo Url::to(['product/detail', 'pid' => $pro->productid]); ?>">
                                     <img src="<?php echo $pro->cover ? "http://adm.yuncms.com" . $pro->cover : 'assets/v1.0/images/imgsearch1.jpg' ?>"/>
                                     <p class="title fl"><?php echo $pro['title']; ?></p>
                                     <p class="price fl">
                                         <b>¥</b>
                                         <strong><?php echo $pro['price']; ?></strong>
                                     </p>
-                                    <p class="number fl">
-                                        销量<span>1110</span>
-                                    </p>
                                 </a>
+                                <p class="number fl">
+                                    <strong><a href="<?php echo Url::to(['cart/add', 'pid' => $pro->productid]); ?>">加入购物车</a></strong>
+                                </p>
                             </div>
                         </li>
                         <?php endforeach; ?>
