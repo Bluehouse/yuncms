@@ -54,7 +54,7 @@
                             <td class="text-center"><?php echo date('y-m-d H:i:s', $admin->createtime); ?></td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <a href="<?php echo Url::to(['manage/assign', 'aid' => $admin->adminid]); ?>"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="授权"><i class="ion-edit"></i></button>
+                                    <a href="<?php echo Url::to(['manage/assign', 'aid' => $admin->adminid]); ?>"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="授权"><i class="fa fa-key"></i></button>
                                     <a href="<?php echo Url::to(['manage/edit', 'id' => $admin->adminid]); ?>"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="编辑"><i class="ion-edit"></i></button>
                                     <a href="<?php echo Url::to(['manage/del', 'id' => $admin->adminid]); ?>"><button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="删除"><i class="ion-close"></i></button>
                                 </div>

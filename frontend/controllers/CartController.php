@@ -5,6 +5,7 @@ use yii\web\Controller;
 use common\models\UserModel;
 use common\models\CartModel;
 use common\models\ProductModel;
+use yii\helpers\Json;
 use Yii;
 
 class CartController extends Controller {
@@ -59,7 +60,6 @@ class CartController extends Controller {
 
         // 将数据插入购物车,插入购物车前，判断是否已经有内容
         $model = CartModel::find()->where('productid = :pid and userid = :uid', [':pid' => $data['CartModel']['productid'], ':uid' => $data['CartModel']['userid']])->one();
-
         if (empty($model)) {
             $model = new CartModel;
         } else {
@@ -70,5 +70,55 @@ class CartController extends Controller {
 
         // 跳转到购物车首页
         return $this->redirect(['cart/index']);
+    }
+
+    // 异步修改购物车数据,主要是productnum
+    public function actionAjaxMod(){
+        if (Yii::$app->request->isAjax) {
+            $session = Yii::$app->session;
+            $productid = Yii::$app->request->post('productid');
+            $productnum = Yii::$app->request->post('productnum');
+            $userid = 1; // 应该从session中获取
+
+            if(CartModel::updateAll(['productnum' => $productnum], 'userid = :uid and productid = :pid', [':uid' => $userid, ':pid' => $productid])) {
+                $response = [
+                    'error' => 0,
+                    'msg' => '修改成功',
+                    'data' => true
+                ];
+            } else {
+                $response = [
+                    'error' => -1,
+                    'msg' => '修改失败',
+                    'data' => false
+                ];
+            }
+                return Json::encode($response);
+//            return json_encode($response);
+        }
+        return false;
+    }
+
+    // 删除购物车
+    public function actionAjaxDel() {
+        if (Yii::$app->request->isAjax) {
+            $session = Yii::$app->session;
+            $productid = (int)Yii::$app->request->get('productid');
+            $userid = 1;
+            if (CartModel::deleteAll('productid = :pid and userid = :uid', [':pid' => $productid, ':uid' => $userid])) {
+                $response = [
+                    'error' => 0,
+                    'msg' => '删除成功',
+                    'data' => true,
+                ];
+            } else {
+                $response = [
+                    'error' => 1,
+                    'msg' => '删除失败',
+                    'data' => false,
+                ];
+            }
+        }
+        return Json::encode($response);
     }
 }

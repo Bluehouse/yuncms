@@ -5,9 +5,7 @@
 ?>
 
 <!DOCTYPE html>
-
 <html class="app-ui">
-
 <head>
     <!-- Meta -->
     <meta charset="UTF-8"/>
@@ -16,7 +14,6 @@
 
     <!-- Document title -->
     <title>Frontend - Login</title>
-
     <meta name="description" content="AppUI - Frontend Template & UI Framework"/>
     <meta name="robots" content="noindex, nofollow"/>
 
@@ -25,8 +22,7 @@
     <link rel="icon" href="assets/v1.0/img/favicons/favicon.ico"/>
 
     <!-- Google fonts -->
-    <link rel="stylesheet"
-          href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400"/>
 
     <!-- AppUI CSS stylesheets -->
     <link rel="stylesheet" id="css-font-awesome" href="assets/v1.0/css/font-awesome.css"/>
@@ -40,9 +36,7 @@
 <body class="app-ui">
 <div class="app-layout-canvas">
     <div class="app-layout-container">
-
         <main class="app-layout-content">
-
             <!-- Page header -->
             <div class="page-header bg-green bg-inverse">
                 <div class="container">
@@ -57,13 +51,10 @@
             </div>
             <!-- End Page header -->
 
-
-
             <!-- Page content -->
             <div class="page-content">
                 <div class="container">
                     <div class="row">
-
                         <!-- Login card -->
                         <div class="col-md-4 col-md-offset-4">
                             <div class="card">
@@ -93,50 +84,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <!-- End login -->
                     </div>
-                    <!-- .row -->
                 </div>
-                <!-- .container -->
             </div>
             <!-- End page content -->
-
-            <!-- Modal -->
-            <div class="modal" id="modal-signup-terms" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="card-header bg-blue bg-inverse">
-                            <h4>Terms &amp; Conditions</h4>
-                            <ul class="card-actions">
-                                <li>
-                                    <button data-dismiss="modal" type="button"><i class="ion-close"></i></button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-block">
-                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet
-                                adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut
-                                metus lobortis tortor tincidunt himenaeos habitant
-                                quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius
-                                lorem sit metus mi.</p>
-                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet
-                                adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut
-                                metus lobortis tortor tincidunt himenaeos habitant
-                                quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius
-                                lorem sit metus mi.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
-                            <button class="btn btn-sm btn-app" type="button" data-dismiss="modal"><i
-                                        class="ion-checkmark"></i> Ok
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End modal -->
-
         </main>
 
         <footer class="app-layout-footer">
@@ -148,7 +100,6 @@
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- .app-layout-container -->
 </div>
@@ -201,7 +152,5 @@
 <script src="assets/v1.0/js/core/jquery.placeholder.min.js"></script>
 <script src="assets/v1.0/js/app.js"></script>
 <script src="assets/v1.0/js/app-custom.js"></script>
-
 </body>
-
 </html>

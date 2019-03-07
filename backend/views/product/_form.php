@@ -1,14 +1,14 @@
 <?php
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Html;
 
-if (Yii::$app->session->hasFlash('info')) {
-    $alert = Yii::$app->session->getFlash('info');
-    echo "<div class='alert alert-success alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-                <p>{$alert}</p>
-            </div>";
-}
+    if (Yii::$app->session->hasFlash('info')) {
+        $alert = Yii::$app->session->getFlash('info');
+        echo "<div class='alert alert-success alert-dismissable'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+                    <p>{$alert}</p>
+                </div>";
+    }
 ?>
 
 <!-- Page Content -->
@@ -57,8 +57,7 @@ if (Yii::$app->session->hasFlash('info')) {
                         <?php echo $form->field($model, 'num')->textInput(['class' => 'form-control']); ?>
                         <?= $form->field($model, 'cover')->widget('common\widgets\file_upload\FileUpload',[
                             'config'=>[
-                                //图片上传的一些配置，不写调用默认配置
-                                'domain_url' => 'http://adm.yuncms.com',
+                                'domain_url' => 'http://adm.yuncms.com', //图片上传的一些配置，不写调用默认配置
                             ]
                         ]) ?>
                     </div>
@@ -95,7 +94,6 @@ if (Yii::$app->session->hasFlash('info')) {
                                     ]
                                 ]
                             ],
-
                         ]) ?>
                     </div>
                     <!-- End Step 2 -->

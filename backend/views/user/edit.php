@@ -31,15 +31,15 @@
 <div class="col-md-7">{input}{error}</div>'
                         ]
                     ]); ?>
-                    <?php echo $form->field($model, 'username')->textInput(['class' => 'form-control', 'disabled' => true]); ?>
-                    <?php echo $form->field($model, 'useremail')->textInput(['class' => 'form-control']); ?>
-                    <?php echo $form->field($model, 'userpass')->passwordInput(['class' => 'form-control']); ?>
-                    <?php echo $form->field($model, 'userrepass')->passwordInput(['class' => 'form-control']); ?>
-                    <div class="form-group m-b-0">
-                        <div class="col-md-8 col-md-offset-4">
-                            <?php echo Html::submitButton('更新', ['class' => 'btn btn-app']); ?>
+                        <?php echo $form->field($model, 'username')->textInput(['class' => 'form-control', 'disabled' => true]); ?>
+                        <?php echo $form->field($model, 'useremail')->textInput(['class' => 'form-control']); ?>
+                        <?php echo $form->field($model, 'userpass')->passwordInput(['class' => 'form-control']); ?>
+                        <?php echo $form->field($model, 'userrepass')->passwordInput(['class' => 'form-control']); ?>
+                        <div class="form-group m-b-0">
+                            <div class="col-md-8 col-md-offset-4">
+                                <?php echo Html::submitButton('更新', ['class' => 'btn btn-app']); ?>
+                            </div>
                         </div>
-                    </div>
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>

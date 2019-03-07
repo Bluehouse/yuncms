@@ -22,15 +22,9 @@
             <div class="card js-wizard-simple">
                 <!-- Step Tabs -->
                 <ul class="nav nav-tabs nav-tabs-icons nav-justified">
-                    <li class="active">
-                        <a href="#simple-classic-step1" data-toggle="tab"><i class="fa fa-th-list"></i>基本信息</a>
-                    </li>
-                    <li>
-                        <a href="#simple-classic-step2" data-toggle="tab"><i class="fa fa-envira"></i>商品详情</a>
-                    </li>
-                    <li>
-                        <a href="#simple-classic-step3" data-toggle="tab"><i class="ion-ios-gear"></i>附加设置</a>
-                    </li>
+                    <li class="active"><a href="#simple-classic-step1" data-toggle="tab"><i class="fa fa-th-list"></i>基本信息</a></li>
+                    <li><a href="#simple-classic-step2" data-toggle="tab"><i class="fa fa-envira"></i>商品详情</a></li>
+                    <li><a href="#simple-classic-step3" data-toggle="tab"><i class="ion-ios-gear"></i>附加设置</a></li>
                 </u l>
                 <!-- End Step Tabs -->
 
@@ -128,9 +122,7 @@
                 <!-- Steps Navigation -->
                 <div class="card-block b-t">
                     <div class="row">
-                        <div class="col-xs-6 text-right">
-                            <?php echo Html::submitButton('提交', ['class' => 'btn btn-app']);?>
-                        </div>
+                        <div class="col-xs-6 text-right"><?php echo Html::submitButton('提交', ['class' => 'btn btn-app']);?></div>
                     </div>
                 </div>
                 <?php ActiveForm::end(); ?>

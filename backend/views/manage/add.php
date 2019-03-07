@@ -1,17 +1,18 @@
 <?php
     use yii\bootstrap\ActiveForm;
     use yii\helpers\Html;
+    use yii\helpers\Url;
 ?>
 <!-- Page Content -->
 <div class="container-fluid p-y-md">
     <?php
-    if (Yii::$app->session->hasFlash('info')) {
-        $alert = Yii::$app->session->getFlash('info');
-        echo "<div class='alert alert-success alert-dismissable'>
-        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-        <p>{$alert}</p>
-    </div>";
-    }
+        if (Yii::$app->session->hasFlash('info')) {
+            $alert = Yii::$app->session->getFlash('info');
+            echo "<div class='alert alert-success alert-dismissable'>
+            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+            <p>{$alert}</p>
+        </div>";
+        }
     ?>
     <div class="row">
         <div class="col-lg-11">
@@ -20,7 +21,7 @@
                     <h4>添加管理员</h4>
                 </div>
                 <div class="card-block">
-                    <a href="<?php echo yii\helpers\Url::to(['manage/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
+                    <a href="<?php echo Url::to(['manage/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
                     <?php $form = ActiveForm::begin([
                         'enableClientScript' => false, // 阻止引入js
                         'options' => ['class' => 'js-validation-bootstrap form-horizontal'],
@@ -41,7 +42,6 @@
                         </div>
                    <?php ActiveForm::end(); ?>
                 </div>
-
             </div>
         </div>
     </div>

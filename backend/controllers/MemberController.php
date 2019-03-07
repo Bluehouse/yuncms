@@ -20,6 +20,7 @@ class MemberController extends CommonController {
             }
         }
         // 清空表单中浏览器保存的默认数据
+        $model->username = "";
         $model->userpass = "";
         $model->userrepass = "";
         return $this->render('/user/add', ['model' => $model]);

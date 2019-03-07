@@ -156,19 +156,11 @@
                             <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Profile</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">3</span> News</a>
-                                </li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">1</span> Messages</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a></li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">More</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)">Edit Profile..</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -202,19 +194,11 @@
                             <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Profile</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">3</span> News</a>
-                                </li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">1</span> Messages</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a></li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">More</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)">Edit Profile..</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -232,7 +216,6 @@
             </div>
             <!-- End Weekly users Widget -->
         </div>
-        <!-- .col-lg-4 -->
 
         <div class="col-lg-8">
             <!-- Transactions history Widget -->
@@ -244,19 +227,11 @@
                             <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Profile</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">3</span> News</a>
-                                </li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">1</span> Messages</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a></li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">More</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)">Edit Profile..</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -267,15 +242,12 @@
                     </div>
                 </div>
                 <div class="card-block text-center">
-                    <span class="label bg-green m-r-xs">Statistics <i
-                            class="ion-connection-bars"></i></span>
+                    <span class="label bg-green m-r-xs">Statistics <i class="ion-connection-bars"></i></span>
                     <small>for the <a href="javascript:void(0)">last year</a></small>
                 </div>
             </div>
-            <!-- End Transactions history Widget -->
         </div>
     </div>
-    <!-- .row -->
 
     <div class="row">
         <div class="col-lg-8">
@@ -288,23 +260,14 @@
                             <button type="button" data-toggle="dropdown"><i class="ion-more"></i></button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Profile</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">3</span> News</a>
-                                </li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)"><span
-                                            class="badge pull-right">1</span> Messages</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">3</span> News</a></li>
+                                <li><a tabindex="-1" href="javascript:void(0)"><span class="badge pull-right">1</span> Messages</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">More</li>
-                                <li>
-                                    <a tabindex="-1" href="javascript:void(0)">Edit Profile..</a>
-                                </li>
+                                <li><a tabindex="-1" href="javascript:void(0)">Edit Profile..</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <!-- .card-actions -->
                 </div>
                 <!-- .card-header -->
                 <div class="card-block">
@@ -326,7 +289,6 @@
                         <div class="col-sm-4">
                             <p class="h6 small text-muted">Yearly change</p>
                             <p class="h3 m-t-0">+74%</p>
-                            <!-- Chart.js Charts (initialized in js/pages/base_pages_dashboard.js), for more examples please check http://www.chartjs.org/docs/ -->
                             <div style="height: 120px;">
                                 <canvas class="js-chartjs-lines6"></canvas>
                             </div>
@@ -334,9 +296,7 @@
                     </div>
                 </div>
             </div>
-            <!-- End Yearly summary widget -->
         </div>
-        <!-- .col-lg-8 -->
 
         <!-- Server load Widget -->
         <div class="col-lg-4">
@@ -344,9 +304,7 @@
                 <div class="card-header bg-purple bg-inverse">
                     <h4>Server load</h4>
                     <ul class="card-actions">
-                        <li>
-                            <span class="js-flot-live-info"></span>
-                        </li>
+                        <li><span class="js-flot-live-info"></span></li>
                     </ul>
                 </div>
                 <div class="card-block bg-purple p-x-0 p-b-0">
