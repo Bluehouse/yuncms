@@ -1,8 +1,9 @@
 <?php $this->beginPage(); ?>
 <?php
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Url;
     use frontend\assets\AppAsset;
     AppAsset::register($this);
-    use yii\helpers\Url;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -70,6 +71,10 @@
 
 <!--购物车 -->
 <div class="concent">
+    <?php $form = ActiveForm::begin([
+        'id' => 'myform',
+        'action' => Url::to(['order/add']),
+    ]) ?>
     <div id="cartTable">
         <div class="cart-table-th">
             <div class="wp">
@@ -115,6 +120,9 @@
                         $totalNum = 0;
                         foreach($data as $key => $pro):
                     ?>
+                        <input type="hidden" name="orderDetail[<?php echo $key; ?>][productid]" value="<?php echo $pro['productid']; ?>" />
+                        <input type="hidden" name="orderDetail[<?php echo $key; ?>][price]" value="<?php echo $pro['saleprice']; ?>" />
+                        <input type="hidden" name="orderDetail[<?php echo $key; ?>][productnum]" value="<?php echo $pro['productnum']; ?>" />
                     <ul class="item-content clearfix">
                         <li class="td td-chk">
                             <div class="cart-checkbox ">
@@ -188,7 +196,6 @@
         <!-- 遍历购物车end -->
     </div>
     <div class="clear"></div>
-
     <div class="float-bar-wrapper">
         <div id="J_SelectAll2" class="select-all J_SelectAll">
             <div class="cart-checkbox">
@@ -215,11 +222,12 @@
                 <strong class="price">¥<em id="J_Total"><?php echo $total; ?></em></strong>
             </div>
             <div class="btn-area">
-                <a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-                    <span>结&nbsp;算</span></a>
+                <a href="javascript:void(0)" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算" onClick="document.getElementById('myform').submit(); return false;">
+                <span>结&nbsp;算</span></a>
             </div>
         </div>
     </div>
+    <?php ActiveForm::end(); ?>
 
     <div class="footer">
         <div class="footer-hd">
