@@ -57,7 +57,7 @@ class CategoryModel extends ActiveRecord{
 
         // 重组options
 //        $cateList = [];
-        $cateList[0] =  "添加顶级分类";
+        $cateList[0] =  "顶级分类";
 
         foreach($cates as $cate){
             $cateList[$cate['cateid']] = htmlspecialchars_decode($cate['title']); // 为什么处理不了&nbsp;

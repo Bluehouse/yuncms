@@ -1,6 +1,7 @@
 <?php
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Html;
+    use yii\helpers\Url;
 ?>
 <!-- Page Content -->
 <div class="container-fluid p-y-md">
@@ -20,7 +21,7 @@ use yii\helpers\Html;
                     <h4>添加分类</h4>
                 </div>
                 <div class="card-block">
-                    <a href="<?php echo yii\helpers\Url::to(['category/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
+                    <a href="<?php echo Url::to(['category/list']); ?>"><i class="fa fa-share btn btn-app-green-outline">返回列表</i></a>
                     <?php $form = ActiveForm::begin([
                         'enableClientScript' => false, // 阻止引入js
                         'options' => ['class' => 'js-validation-bootstrap form-horizontal'],
@@ -30,7 +31,7 @@ use yii\helpers\Html;
 <div class="col-md-7">{input}{error}</div>'
                         ]
                     ]); ?>
-                    <?php echo $form->field($model, 'parentid')->dropDownList($cateList); ?>
+                    <?php echo $form->field($model, 'parentid')->dropDownList($cateList, ['prompt' => '请选择分类']); ?>
                     <?php echo $form->field($model, 'title')->textInput(['class' => 'form-control']); ?>
                     <div class="form-group m-b-0">
                         <div class="col-md-8 col-md-offset-4">
