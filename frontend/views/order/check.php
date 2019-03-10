@@ -140,7 +140,7 @@
                 <li class="pay taobao selected"><img src="assets/v1.0/images/zhifubao.jpg"/>支付宝<span></span></li>
             </ul>
         </div>
-        <input type="hidden" name="payid" value="1"/>
+        <input type="hidden" name="payment" value="alipay"/>
         <div class="clear"></div>
 
         <!--订单 -->

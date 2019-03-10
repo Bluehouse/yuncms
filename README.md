@@ -29,7 +29,7 @@ YunCMS是基于Yii2.0框架的一套CMS系统，方便用户快速建立企业�
 
 # 运行环境
 - 操作系统：Windows/Mac/Linux
-- php： >= 5.5.9
+- php： >= 5.4.0
 - mysql： >= 5.5
 
 # 开源协议

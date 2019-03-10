@@ -8,6 +8,7 @@ use common\models\OrderDetailModel;
 use common\models\ProductModel;
 use common\models\CartModel;
 use common\models\AddressModel;
+use frontend\models\Pay;
 use Yii;
 
 class OrderController extends CommonController {
@@ -129,11 +130,30 @@ class OrderController extends CommonController {
 
                 $data['OrderModel'] = $post;
                 if ($model->load($data) && $model->save()) {
-                    return $this->redirect(['order/pay']);
+                    return $this->redirect(['order/pay', 'orderid' => $post['orderid'], 'payment' => $post['payment']]);
                 }
             }
 
             return $this->redirect(['index/index']);
         }
+    }
+
+    // 订单支付，跳转到网关
+    public function actionPay() {
+        try {
+            $orderid = Yii::$app->request->get('orderid');
+            $payment = Yii::$app->request->get('payment');
+            if (empty($orderid) || empty($payment)) {
+                throw new \Exception();
+            }
+
+            if ($payment == 'alipay') {
+                return Pay::alipay($orderid); // 跳转到支付宝的网关
+            }
+        } catch(\Exception $e) {
+            var_dump($e);die;
+            return $this->redirect(['order/index']);
+        }
+
     }
 }
