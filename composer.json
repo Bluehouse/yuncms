@@ -1,7 +1,12 @@
 {
     "name": "yiisoft/yii2-app-advanced",
     "description": "Yii 2 Advanced Project Template",
-    "keywords": ["yii2", "framework", "advanced", "project template"],
+    "keywords": [
+        "yii2",
+        "framework",
+        "advanced",
+        "project template"
+    ],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -19,7 +24,8 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "aliyuncs/oss-sdk-php": "~2.0",
-        "yii2-alipay/alipay": "dev-master"
+        "yii2-alipay/alipay": "dev-master",
+        "mito/yii2-sentry": "~1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -34,10 +40,14 @@
             "enabled": false
         }
     },
-    "repositories": [
-        {
+    "repositories": {
+        "0": {
             "type": "composer",
             "url": "https://asset-packagist.org"
+        },
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
         }
-    ]
+    }
 }
