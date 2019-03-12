@@ -1,11 +1,9 @@
 <?php
     use yii\helpers\Url;
 ?>
-
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html class="app-ui" lang="<?= Yii::$app->language ?>">
-
 <head>
     <!-- Meta -->
     <meta charset="<?= Yii::$app->charset ?>" />
@@ -21,7 +19,6 @@
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="assets/v1.0/img/favicons/apple-touch-icon.png" />
     <link rel="icon" href="assets/v1.0/img/favicons/favicon.ico" />
-
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="assets/v1.0/js/plugins/datatables/jquery.dataTables.min.css" />
 
@@ -32,7 +29,6 @@
     <link rel="stylesheet" id="css-app" href="assets/v1.0/css/app.css" />
     <link rel="stylesheet" id="css-app-custom" href="assets/v1.0/css/app-custom.css" />
     <!-- End Stylesheets -->
-
     <?php $this->head() ?>
 </head>
 
@@ -43,7 +39,6 @@
 
         <!-- Drawer -->
         <aside class="app-layout-drawer">
-
             <!-- Drawer scroll area -->
             <div class="app-layout-drawer-scroll">
                 <!-- Drawer logo -->
@@ -132,7 +127,7 @@
                         <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="fa fa-list-alt"></i>订单管理</a>
                             <ul class="nav nav-subnav">
-                                <li><a href="<?php echo Url::to(['public/change-pass']); ?>">订单列表</a></li>
+                                <li><a href="<?php echo Url::to(['order/list']); ?>">订单列表</a></li>
                             </ul>
                         </li>
 
